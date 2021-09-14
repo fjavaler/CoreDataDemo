@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct CoreDataDemoApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  
+  // MARK: Properties
+  let persistenceContainer = PersistenceController.shared
+  
+  // MARK: Body
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
+        .environment(\.managedObjectContext, persistenceContainer.container.viewContext)
     }
+  }
 }
